@@ -1,12 +1,13 @@
 Android Build System (Cyanogenmod 13/14) + optional && Automated Key-Signing
 
-this repository adds optional && automated keysigning to android_build (cyanogenmod 13/14). Currently, cyanogenmod and many 
-AOSP-based roms tend to be signed with publicly known keys (like 'testkey') ~ Unless someone has gone to the extra effort to
-sign their own builds, which is often a manual process. All of the CM builds are signed with 'testkey' a publicly known key, 
-which is a brutal/gaping security hole and ignores a basic and essential part of Android's security. ie:
+This repository adds optional && automated key-signing to android_build (cyanogenmod 13/14). Currently, cyanogenmod and many 
+AOSP-based roms tend to be signed with publicly known keys. OEMs however, never sign them this way! So, unless someone has gone
+to the extra effort to sign their own builds, you are probably using one of these ROMs (like the majority found on XDA, or CM's ROMS). Signing is usually a manual process... All of the publicly available CM builds ignore this essential part of Android's security model by using these keys. ie:
 
 if your system apps or OTAs are signed with test keys, anyone could install a system malicious app or send a malicious OTA 
-update and your android device would happily accept it, since it's signed with the correct keys! Pretty bad stuff. O_o
+update and your android device would happily accept it, since it's signed with the correct keys! Pretty bad stuff. O_o ... I 
+seem to remember that somewhere in Cyanogenmod's documentation that the test-keys were needed for some reason, but this is 
+simply incorrect. You can resign your rom without losing any functionality and adding some additional security.
 
 By patching the build system, you can easily sign your own rom. When you have generated keys AND pass the environment variable 
 to enable key-signing, the build system will re-sign all of your rom, apps and zips and also change the build from a test-keys
