@@ -8,7 +8,9 @@ which is a brutal/gaping security hole and ignores a basic and essential part of
 if your system apps or OTAs are signed with test keys, anyone could install a system malicious app or send a malicious OTA 
 update and your android device would happily accept it, since it's signed with the correct keys! Pretty bad stuff. O_o
 
-By patching the build system, you can easily sign your own rom. The steps are simple - In bash, from your 'croot' or 
+By patching the build system, you can easily sign your own rom. When you have generated keys AND pass the environment variable 
+to enable key-signing, the build system will re-sign all of your rom, apps and zips and also change the build from a test-keys
+build to a release build. The steps are simple - In bash, from your 'croot' or 
 root directory of AOSP/CM sources;
 
 * $ mkdir keys
