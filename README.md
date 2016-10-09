@@ -15,6 +15,7 @@ root directory of AOSP/CM sources;
 * $ cd keys
 
 Format:    [command] [key type] [Country] [State/Province] [City] [ROM Name/info] [email address]
+(You may want to look at the raw text file, since github will wrap the below commands!)
 
 ../development/tools/make_key releasekey '/C=CA/ST=Ontario/L=Toronto/O=ROM/OU=ROM/CN=ROM/emailAddress=xxxxx@gmail.com'
 
