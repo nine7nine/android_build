@@ -1,25 +1,19 @@
 Android Build System (Cyanogenmod 13/14) + optional && Automated Key-Signing
 
-This repository adds optional && automated key-signing to android_build (cyanogenmod 13/14). Currently, cyanogenmod and many 
-AOSP-based roms tend to be signed with publicly known keys. OEMs however, never sign them this way! So, unless someone has gone
-to the extra effort to sign their own builds, you are probably using one of these ROMs (like the majority found on XDA, or CM's ROMS). Signing is usually a manual process... All of the publicly available CM builds ignore this essential part of Android's security model by using these keys. ie:
+This repository adds optional && automated key-signing to android_build (cyanogenmod 13/14). By patching the build system, you 
+can easily sign your own rom with your own private keys (rather than using test-keys found in the android SDK or using 
+Cyanogenmod's release-keys or dev-keys). This may be advantagous for some people who are creating customized CM-based roms,
+do not want ot manually re-sign the rom and/or would prefer to not use someone else's keys. 
 
-if your system apps or OTAs are signed with test keys, anyone could install a system malicious app or send a malicious OTA 
-update and your android device would happily accept it, since it's signed with the correct keys! Pretty bad stuff. O_o ... I 
-seem to remember that somewhere in Cyanogenmod's documentation that the test-keys were needed for some reason, but this is 
-simply incorrect. You can resign your rom without losing any functionality and adding some additional security.
-
-By patching the build system, you can easily sign your own rom. When you have generated keys AND pass the environment variable 
-to enable key-signing, the build system will re-sign all of your rom, apps and zips and also change the build from a test-keys
-build to a release build. The steps are simple - In bash, from your 'croot' or 
-root directory of AOSP/CM sources;
+When you have generated your keys AND pass the environment variable to enable key-signing, the build system will re-sign all of 
+your rom, apps and zips and aslo change the build from a test-keys build to a release build. The steps are simple - In bash, from your 'croot' or root directory of AOSP/CM sources;
 
 * $ mkdir keys
 * $ cd keys
 
 (You may want to look at the raw file, since github will wrap the below commands!) Format:
 
-    [command] [key type] [Country] [State/Province] [City] [ROM Name/info] [email address]
+    [command] [key type] [C=Country code] [ST=State/Province] [L=City] [O/OU/CN=Rome name] [email address]
 
 ../development/tools/make_key releasekey '/C=CA/ST=Ontario/L=Toronto/O=ROM/OU=ROM/CN=ROM/emailAddress=xxxxx@gmail.com'
 
@@ -34,8 +28,8 @@ root directory of AOSP/CM sources;
 ../development/tools/make_key extra '/C=CA/ST=Ontario/L=Toronto/O=ROM/OU=ROM/CN=ROM/emailAddress=xxxxx@gmail.com'
 
 Exporting the environment varilable below points the build system to your keys. (I add it in the script that I use 
-for setting up android builds). NOTE: It must be passed in order for the automated key-singing to be used. If it is not passed,
-then android_build will fall back to the regular keys.
+for setting up android builds before compililation). NOTE: It must be passed in order for the automated key-singing to be used.
+If it is not passed, then android_build will fall back to the regular keys.
 
 $ export SIGNING_KEY_DIR=/path/to/your/signing-keys
 
