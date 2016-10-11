@@ -1,9 +1,9 @@
 Android Build System (Cyanogenmod 13/14) + optional && Automated Key-Signing
 
-This repository adds optional && automated key-signing to android_build (cyanogenmod 13/14). By patching the build system, you 
-can easily sign your own rom with your own private keys (rather than using test-keys found in the android SDK or using 
-Cyanogenmod's release-keys or dev-keys). This may be advantagous for some people who are creating customized CM-based roms,
-do not want ot manually re-sign the rom and/or would prefer to not use someone else's keys. 
+This repository adds optional && automated (custom) key-signing to android_build (cyanogenmod 13/14). By patching the build 
+system, you can easily sign your own rom with your own private keys (rather than using test-keys found in the android SDK or 
+using Cyanogenmod's release-keys or dev-keys). This may be advantagous for some people who are creating customized CM-based 
+roms, do not want ot manually re-sign the rom and/or would prefer to not use someone else's keys. 
 
 When you have generated your keys AND pass the environment variable to enable key-signing, the build system will re-sign all of 
 your rom, apps and zips and aslo change the build from a test-keys build to a release build. The steps are simple - In bash, from your 'croot' or root directory of AOSP/CM sources;
